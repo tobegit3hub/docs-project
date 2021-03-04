@@ -15,6 +15,7 @@ jobs:
         run: |
           git config --global user.email "robot@4paradigm.com"
           git config --global user.name "robot"
+          git fetch origin gh-pages
           git checkout gh-pages
           mkdir -p ./docs/
           cp -r _book/* docs/
