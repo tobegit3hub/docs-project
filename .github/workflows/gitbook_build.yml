@@ -11,4 +11,12 @@ jobs:
       - uses: actions/setup-node@v1
       - run: npm install -g gitbook-cli
       - run: gitbook build
-      - run: mv _book/ docs/
+      - name: push to main branch
+        run: |
+          mv _book/ docs/
+          cd ./docs/
+          git config --global user.email "robot@4paradigm.com"
+          git config --global user.name "robot"
+          git add .
+          git commit -m "Updated By Github Actions With Build ${{github.run_number}} of ${{github.workflow}} For Github Pages"
+          git push origin main
